@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Deletecart, increaseQty, decreaseQty } from "./store/cartSlice";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DeleteModal from "./DeleteModal";
+import CheckoutPage from "./Checkout/CheckoutPage";
 
 const Cart = () => {
+  const [modal, setModal] = useState(null);
+  // const navigate = useNavigate();
   const cart = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
 
@@ -22,6 +28,14 @@ const Cart = () => {
     return cart.reduce((total, item) => total + item.price * item.qty, 0);
   };
 
+  const handleModal = (id) => {
+    console.log("hi");
+    setModal(id);
+  };
+  const handleClose = () => {
+    setModal(null);
+  };
+
   return (
     <div className="flex flex-col items-center mt-8">
       <h4 className="text-xl font-bold mb-4 text-gray-700">Your Cart</h4>
@@ -32,7 +46,14 @@ const Cart = () => {
               src="https://static.vecteezy.com/system/resources/previews/016/462/240/non_2x/empty-shopping-cart-illustration-concept-on-white-background-vector.jpg"
               alt="cart empty"
             />
-            No items in cart
+            <p className="text-black font-bold"> No items in cart</p>
+            <br />
+            Just relax, let us help you find some first-class products <br />
+            <Link to="/">
+              <button className="bg-green-600 border p-3 mt-3 text-white font-bold">
+                Start Shopping
+              </button>
+            </Link>
           </p>
         ) : (
           <div>
@@ -68,20 +89,29 @@ const Cart = () => {
                   </div>
                   <button
                     className="text-red-600 mt-2 font-semibold"
-                    onClick={() => handleDelete(item)}
+                    // onClick={() => handleDelete(item)}
+                    onClick={() => handleModal(item.id)}
                   >
                     Delete
                   </button>
+                  {modal === item.id && (
+                    <DeleteModal
+                      onClose={handleClose}
+                      onConfirm={() => handleDelete(item)}
+                    />
+                  )}
                 </div>
               </div>
             ))}
             <div className="text-right text-lg font-semibold mt-4">
-              Total: ₹ {calculateTotal()}
+              Total: ₹ {calculateTotal().toFixed(2)}
             </div>
             <div className="text-right mt-4">
-              <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
-                Proceed to Checkout
-              </button>
+              <Link to="/checkoutpage">
+                <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+                  Proceed to Checkout
+                </button>
+              </Link>
             </div>
           </div>
         )}

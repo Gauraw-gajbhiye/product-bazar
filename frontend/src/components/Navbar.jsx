@@ -14,9 +14,9 @@ function Navbar() {
   };
 
   return (
-    <div className="border shadow-lg flex flex-col sm:flex-row justify-between h-18 p-4 mb-6">
+    <div className="fixed top-0 left-0 z-50 border w-full shadow-lg flex flex-col sm:flex-row bg-white justify-between h-18 p-4 mb-6  ">
       <div className="text-violet-950 text-xl font-bold">Product Bazar</div>
-      <div className="border border-black w-full sm:w-[400px] rounded-sm ">
+      <div className="w-full sm:w-[600px] border border-black rounded-sm">
         <input
           type="text"
           placeholder="Search product"
