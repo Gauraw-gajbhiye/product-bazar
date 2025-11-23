@@ -3,9 +3,12 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const productRoutes = require('./routes/productRoutes');
 const paymentRoutes = require('./routes/paymentRoutes')
+const loadProducts = require("./controllers/loadProducts")
 
 dotenv.config();
-connectDB();
+connectDB().then(() => {
+    loadProducts();
+});
 
 const app = express();
 app.use(express.json());

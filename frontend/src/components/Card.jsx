@@ -33,7 +33,7 @@ function Card() {
 
   const fetchData = async () => {
     setLoading(true);
-    const response = await axios("http://localhost:5000/api/products");
+    const response = await axios("http://localhost:5000/api/products ");
 
     console.log("data", response.data);
 
