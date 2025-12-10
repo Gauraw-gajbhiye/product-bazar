@@ -25,7 +25,6 @@ const CheckoutPage = () => {
     if (activeStep < steps.length) {
       setActiveStep((prev) => prev + 1);
     } else {
-      // Last step completed → navigate to Payment
       navigate("/payment");
     }
   };
@@ -35,8 +34,8 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className="pt-20 max-w-3xl mx-auto p-6 bg-white shadow-xl rounded-2xl">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">
+    <div className="w-full max-w-lg sm:max-w-2xl md:max-w-3xl mx-auto p-4 sm:p-6 md:p-8 my-8 sm:my-12 md:my-20 bg-white shadow-xl rounded-2xl">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-800 text-center">
         Checkout
       </h2>
 
@@ -53,13 +52,13 @@ const CheckoutPage = () => {
           >
             {activeStep === 1 && (
               <input
-                className="border p-2 w-full rounded mb-2"
+                className="border p-2 w-full rounded mb-2 text-sm sm:text-base"
                 placeholder="Enter Email or Phone"
               />
             )}
             {activeStep === 2 && (
               <textarea
-                className="border p-2 w-full rounded mb-2"
+                className="border p-2 w-full rounded mb-2 text-sm sm:text-base"
                 placeholder="Enter Address"
               />
             )}

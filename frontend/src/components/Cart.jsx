@@ -37,9 +37,9 @@ const Cart = () => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-8">
-      <h4 className="text-xl font-bold mb-4 text-gray-700">Your Cart</h4>
-      <div className="w-[600px] rounded border border-slate-500 m-4 p-4 bg-white shadow">
+    <div className="flex flex-col items-center mt-10 ">
+      <h4 className="text-xl font-bold  text-gray-700">Your Cart</h4>
+      <div className="w-full max-w-[900px] rounded border border-slate-500 m-4 p-4 bg-white mt-11 shadow">
         {cart.length === 0 ? (
           <p className="text-center text-gray-500">
             <img
@@ -108,7 +108,7 @@ const Cart = () => {
             </div>
             <div className="text-right mt-4">
               <Link to="/checkoutpage">
-                <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+                <button className="bg-green-600 text-white px-6 py-3 w-full sm:w-auto rounded-lg hover:bg-green-700">
                   Proceed to Checkout
                 </button>
               </Link>

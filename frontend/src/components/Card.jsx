@@ -35,7 +35,7 @@ function Card() {
     setLoading(true);
     // const response = await axios("http://localhost:5000/api/products ");
     const response = await axios(
-      "https://productbazar.onrender.com/api/products "
+      "https://productbazar.onrender.com/api/products"
     );
 
     console.log("data", response.data);
@@ -50,12 +50,12 @@ function Card() {
   };
 
   return (
-    <div className=" min-h-screen py-6 px-4 mt-3">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 justify-items-center">
+    <div className="  min-h-screen py-9 px-4 mt-3 ">
+      <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 justify-items-center ">
         {(loading ? Array(10).fill(0) : filteredData).map((item, index) => (
           <div
             key={loading ? index : item.id}
-            className="rounded-2xl p-4 shadow-md text-center border  flex flex-col justify-between transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl h-[360px] w-[230px]"
+            className="mt-16 md:mt-0 rounded-2xl p-4 shadow-md text-center border  flex flex-col justify-between transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl h-[360px] w-[230px]"
           >
             {loading ? (
               <>
@@ -66,11 +66,11 @@ function Card() {
               </>
             ) : (
               <>
-                <div className="overflow-hidden rounded-xl w-full h-[160px] flex items-center justify-center">
+                <div className=" overflow-hidden rounded-xl w-full h-[160px] flex items-center justify-center">
                   <img
                     loading="lazy"
                     src={item.thumbnail}
-                    alt="product"
+                    alt={item.product}
                     className="transition-transform duration-300 ease-in-out hover:scale-110 h-full object-cover"
                   />
                 </div>

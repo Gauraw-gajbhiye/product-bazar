@@ -43,7 +43,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="ml-2 w-64">
+    <div className="ml-2 w-64 ">
       <h4 className="font-semibold text-2xl mb-4">Products For You</h4>
 
       <div className="p-2 border shadow-lg rounded-md bg-white">
