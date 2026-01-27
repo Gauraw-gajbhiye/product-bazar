@@ -6,10 +6,11 @@ export default function PaymentPage() {
     try {
       // Call backend to create order
       const { data } = await axios.post(
-        "http://localhost:5000/api/payments/orders",
+        // "http://localhost:5000/api/payments/orders",
+        `${import.meta.env.VITE_API_URL}/api/payments/orders`,
         {
           amount: 500, // INR
-        }
+        },
       );
 
       if (!data.success) {
@@ -20,7 +21,8 @@ export default function PaymentPage() {
       const { order } = data;
 
       const options = {
-        key: "rzp_test_xxxxxxxx", // put your Razorpay key_id here (not secret)
+        // key: "rzp_test_xxxxxxxx", // put your Razorpay key_id here (not secret)
+        key: import.meta.env.VITE_RAZORPAY_KEY, // put your Razorpay key_id here (not secret)
         amount: order.amount,
         currency: order.currency,
         name: "My Shop",
