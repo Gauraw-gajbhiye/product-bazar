@@ -5,6 +5,7 @@ Product Bazar is a full-stack eCommerce web application built using the **MERN s
 This project demonstrates end-to-end application development, from frontend UI to backend APIs and third-party payment gateway integration.
 
 ---
+NOTE: Image delay is due to cold start on free hosting.
 
 ## 🚀 Live Demo
 
@@ -96,5 +97,6 @@ npm run start
 cd backend
 npm install
 npm start
+
 
 
