@@ -16,6 +16,28 @@ function Card() {
   const searchTerm = useSelector((state) => state.search.searchTerm);
   const dispatch = useDispatch();
 
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/products`,
+      );
+
+      console.log("RAW RESPONSE:", response.data);
+
+      // Extract actual products array
+      const products = response.data[0].products;
+
+      setData(products);
+      setFilteredData(products);
+    } catch (error) {
+      console.error("ERROR FETCHING PRODUCTS:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,29 +52,6 @@ function Card() {
       setFilteredData(filtered);
     }
   }, [searchTerm, data]);
-
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-
-      console.log("ENV:", import.meta.env.VITE_API_URL);
-
-      const url = `${import.meta.env.VITE_API_URL}/api/products`;
-
-      console.log("CALLING:", url);
-
-      const response = await axios.get(url);
-
-      console.log("RESPONSE:", response.data);
-
-      setData(response.data);
-      setFilteredData(response.data);
-    } catch (error) {
-      console.error("API FAILED:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleAddtoCart = (item) => {
     dispatch(Addtocart(item));
