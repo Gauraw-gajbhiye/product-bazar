@@ -23,7 +23,7 @@ function Card() {
 
       const response = await axios.get(API_URL + "/api/products");
 
-      const products = response.products;
+      const products = response.data;
 
       setData(products);
       setFilteredData(products);
