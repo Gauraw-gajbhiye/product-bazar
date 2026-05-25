@@ -64,7 +64,7 @@ function Card() {
       <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 justify-items-center ">
         {(loading ? Array(10).fill(0) : filteredData).map((item, index) => (
           <div
-            key={loading ? index : item._id}
+            key={loading ? index : item.id}
             className="mt-16 md:mt-0 rounded-2xl p-4 shadow-md text-center border  flex flex-col justify-between transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl h-[360px] w-[230px]"
           >
             {loading ? (
