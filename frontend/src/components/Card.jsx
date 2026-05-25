@@ -32,22 +32,26 @@ function Card() {
   }, [searchTerm, data]);
 
   const fetchData = async () => {
-    setLoading(true);
-    // const response = await axios("http://localhost:5000/api/products ");
-    // const response = await axios(
-    //   "https://product-bazar-1.onrender.com/api/products",
-    // );
-    console.log(import.meta.env.VITE_API_URL);
+    try {
+      setLoading(true);
 
-    const response = await axios(
-      `${import.meta.env.VITE_API_URL}/api/products`,
-    );
+      console.log("ENV:", import.meta.env.VITE_API_URL);
 
-    console.log("data", response.data);
+      const url = `${import.meta.env.VITE_API_URL}/api/products`;
 
-    setData(response.data);
-    setFilteredData(response.data);
-    setLoading(false);
+      console.log("CALLING:", url);
+
+      const response = await axios.get(url);
+
+      console.log("RESPONSE:", response.data);
+
+      setData(response.data);
+      setFilteredData(response.data);
+    } catch (error) {
+      console.error("API FAILED:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleAddtoCart = (item) => {
