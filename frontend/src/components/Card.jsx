@@ -25,7 +25,7 @@ function Card() {
       setFilteredData(data);
     } else {
       const filtered = data.filter((item) =>
-        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        item.title.toLowerCase().includes(searchTerm.toLowerCase()),
       );
       setFilteredData(filtered);
     }
@@ -34,8 +34,12 @@ function Card() {
   const fetchData = async () => {
     setLoading(true);
     // const response = await axios("http://localhost:5000/api/products ");
+    // const response = await axios(
+    //   "https://product-bazar-1.onrender.com/api/products",
+    // );
+
     const response = await axios(
-      "https://productbazar.onrender.com/api/products"
+      `${import.meta.env.VITE_API_URL}/api/products`,
     );
 
     console.log("data", response.data);
