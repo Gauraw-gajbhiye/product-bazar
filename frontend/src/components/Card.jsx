@@ -21,15 +21,9 @@ function Card() {
     try {
       setLoading(true);
 
-      const response = await axios.get(
-        // `${import.meta.env.VITE_API_URL}/api/products`,
-        API_URL + "/api/products",
-      );
+      const response = await axios.get(API_URL + "/api/products");
 
-      console.log("RAW RESPONSE:", response.data);
-
-      // Extract actual products array
-      const products = response.data[0].products;
+      const products = response.products;
 
       setData(products);
       setFilteredData(products);
