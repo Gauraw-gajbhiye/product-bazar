@@ -37,6 +37,7 @@ function Card() {
     // const response = await axios(
     //   "https://product-bazar-1.onrender.com/api/products",
     // );
+    console.log(import.meta.env.VITE_API_URL);
 
     const response = await axios(
       `${import.meta.env.VITE_API_URL}/api/products`,
@@ -58,7 +59,7 @@ function Card() {
       <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 justify-items-center ">
         {(loading ? Array(10).fill(0) : filteredData).map((item, index) => (
           <div
-            key={loading ? index : item.id}
+            key={loading ? index : item._id}
             className="mt-16 md:mt-0 rounded-2xl p-4 shadow-md text-center border  flex flex-col justify-between transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl h-[360px] w-[230px]"
           >
             {loading ? (
