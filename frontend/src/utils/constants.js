@@ -1,0 +1,1 @@
+export const API_URL = "https://product-bazar-1.onrender.com";

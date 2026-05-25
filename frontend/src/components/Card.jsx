@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Addtocart } from "./store/cartSlice";
 import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 function Card() {
   const [data, setData] = useState([]);
@@ -21,7 +22,8 @@ function Card() {
       setLoading(true);
 
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/products`,
+        // `${import.meta.env.VITE_API_URL}/api/products`,
+        API_URL + "/api/products",
       );
 
       console.log("RAW RESPONSE:", response.data);
